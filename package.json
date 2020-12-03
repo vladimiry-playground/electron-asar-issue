@@ -1,0 +1,24 @@
+{
+  "name": "electron-asar-issue",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "npm-run-all build build:start",
+    "build": "npm-run-all build:clean build:app:npm:clean build:app:npm:install build:app:pack-to-asar build:electron:copy build:electron:remove-default-app",
+    "build:clean": "rimraf ./build",
+    "build:app:npm:clean": "rimraf ./app/node_modules",
+    "build:app:npm:install": "npm --prefix ./app ci",
+    "build:app:pack-to-asar": "npx --no-install asar pack ./app ./build/resources/app.asar --unpack-dir \"node_modules/fs-extra\"",
+    "build:electron:copy": "cpx \"./node_modules/electron/dist/**/*\" ./build",
+    "build:electron:remove-default-app": "rimraf ./build/resources/default_app.asar",
+    "build:start": "./build/electron"
+  },
+  "devDependencies": {
+    "asar": "3.0.3",
+    "cpx2": "3.0.0",
+    "electron": "11.0.3",
+    "npm-run-all": "4.1.5",
+    "rimraf": "3.0.2"
+  }
+}

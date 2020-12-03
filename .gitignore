@@ -1,0 +1,14 @@
+# idea ide
+/.idea
+*.iml
+
+# vs code ide
+/.vscode
+
+# node.js
+node_modules
+npm-debug.log
+yarn-error.log
+
+# generated
+/build/
