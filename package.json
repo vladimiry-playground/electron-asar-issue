@@ -12,13 +12,16 @@
     "build:app:pack-to-asar": "npx --no-install asar pack ./app ./build/resources/app.asar --unpack-dir \"node_modules/fs-extra\"",
     "build:electron:copy": "cpx \"./node_modules/electron/dist/**/*\" ./build",
     "build:electron:remove-default-app": "rimraf ./build/resources/default_app.asar",
-    "build:start": "./build/electron"
+    "build:start": "run-script-os",
+    "build:start:win32": "build\\electron.exe",
+    "build:start:darwin:linux": "./build/electron"
   },
   "devDependencies": {
     "asar": "3.0.3",
     "cpx2": "3.0.0",
     "electron": "11.0.3",
     "npm-run-all": "4.1.5",
-    "rimraf": "3.0.2"
+    "rimraf": "3.0.2",
+    "run-script-os": "1.1.3"
   }
 }
